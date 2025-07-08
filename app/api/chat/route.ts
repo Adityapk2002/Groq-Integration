@@ -1,5 +1,4 @@
-import dotenv from 'dotenv';
-dotenv.config();
+
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import  OpenAI  from "openai";
 
