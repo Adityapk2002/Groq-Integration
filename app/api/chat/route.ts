@@ -15,6 +15,7 @@ export async function POST(req : Request){
     messages,
   });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
   const stream = OpenAIStream(response as any)
 
   return new StreamingTextResponse(stream)
