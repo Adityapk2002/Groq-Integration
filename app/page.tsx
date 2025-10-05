@@ -1,6 +1,7 @@
 "use client";
 import { useChat } from "ai/react";
 import { useEffect, useRef } from "react";
+import {SendHorizontal } from "lucide-react";
 
 export default function ChatPage() {
   const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat();
@@ -12,6 +13,12 @@ export default function ChatPage() {
 }, [messages]);
 
 
+  function handleSend(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
+    event.preventDefault();
+    if (!isLoading && input.trim()) {
+      handleSubmit(event as unknown as React.FormEvent<HTMLFormElement>);
+    }
+  }
   return (
   <>
   <div className="flex flex-col bg-gray-900 h-screen text-white p-4 ">
@@ -46,7 +53,7 @@ export default function ChatPage() {
     <form 
     onSubmit={handleSubmit}
     className="flex justify-center mt-5">
-         <div className="w-full max-w-2xl px-4">
+         <div className="w-full max-w-2xl px-4 relative">
             <input
               type="text"
               value={input}
@@ -55,6 +62,13 @@ export default function ChatPage() {
               className="w-full rounded-full border border-white bg-gray-800 text-white px-4 py-3 mb-5 focus:outline-none"
               placeholder="Type your message..."
             />
+             {/* <button
+              type="button"
+              onClick={handleSend}
+              className="absolute right-1 top-1/2 transform -translate-y-1/2 
+                 h-10 w-10 rounded-full bg-white hover:bg-gray-200 flex items-center justify-center">
+      <SendHorizontal className="h-6 text-black" />
+    </button> */}
           </div>
     </form>
 
