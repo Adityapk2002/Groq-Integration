@@ -15,7 +15,7 @@ export default function ChatPage() {
   return (
   <>
   <div className="flex flex-col bg-gray-900 h-screen text-white p-4 ">
-    <header className="text-3xl font-extrabold flex justify-center md:text-6xl">
+    <header className="text-4xl font-extrabold flex justify-center md:text-6xl">
       <h1>Chat with <span className="underline underline-offset-2 ">AI </span>ft.
       <span className="text-yellow-400">Groq</span></h1>
     </header>
