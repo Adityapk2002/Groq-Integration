@@ -12,13 +12,6 @@ export default function ChatPage() {
   bottomRef.current?.scrollIntoView({ behavior: "smooth" });
 }, [messages]);
 
-
-  function handleSend(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
-    event.preventDefault();
-    if (!isLoading && input.trim()) {
-      handleSubmit(event as unknown as React.FormEvent<HTMLFormElement>);
-    }
-  }
   return (
   <>
   <div className="flex flex-col bg-gray-900 h-screen text-white p-4 ">
@@ -57,18 +50,18 @@ export default function ChatPage() {
             <input
               type="text"
               value={input}
-              disabled ={isLoading}
+              disabled={isLoading}
               onChange={handleInputChange}
-              className="w-full rounded-full border border-white bg-gray-800 text-white px-4 py-3 mb-5 focus:outline-none"
+              className="w-full rounded-full border border-white bg-gray-800 text-white px-4 py-3 pr-12 focus:outline-none"
               placeholder="Type your message..."
             />
-             {/* <button
-              type="button"
-              onClick={handleSend}
-              className="absolute right-1 top-1/2 transform -translate-y-1/2 
-                 h-10 w-10 rounded-full bg-white hover:bg-gray-200 flex items-center justify-center">
-      <SendHorizontal className="h-6 text-black" />
-    </button> */}
+            <button
+              type="submit"
+              disabled={isLoading || !input.trim()}
+              className="absolute right-7 top-1/2 transform -translate-y-1/2 p-2 rounded-full bg-gray-900 hover:bg-gray-600 disabled:bg-gray-800 disabled:cursor-not-allowed "
+            >
+              <SendHorizontal className="h-6 w-6 text-white" />
+            </button>
           </div>
     </form>
 
